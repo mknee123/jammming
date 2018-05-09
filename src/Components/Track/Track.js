@@ -8,7 +8,7 @@ class Track extends React.Component {
 
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
-    this.renderPreview = this.renderPreview.bind(this);
+    this.renderAction = this.renderAction.bind(this);
   }
 
   addTrack(){
@@ -31,7 +31,7 @@ class Track extends React.Component {
           {/*track name will go here*/}
           {this.props.track.name}
           </h3>
-          <h3>{this.props.track.title}</h3>
+          
 {console.log(this.props)}
           <p>
           {/*track artist will go here*/}

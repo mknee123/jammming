@@ -7,13 +7,15 @@ import Playlist from '../Playlist/Playlist';
 
 import Spotify from '../../util/Spotify';
 
+//Spotify.getAccessToken();
+
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       searchResults: [],
-      playlistName : 'MurKat Sweet Feels',
+      playlistName : '',
       playlistTracks: []
     };
     this.addTrack = this.addTrack.bind(this);
@@ -44,10 +46,16 @@ class App extends React.Component {
   }
 
   savePlaylist() {
+    const trackURIs = this.state.playlistTracks.map(track => track.uri);
+    Spotify.savePlaylist(this.state.playlistName, trackURIs).then(() => {
+      this.setState({
+        playlistName: 'New Playlist',
+        playlistTracks: []
+      });
+    });
     console.log("the state of the playlist name after onChange is", this.state.playlistName);
+}
 
-    this.state.playlistTracks.map(track => track.uri);
-    }
 
 
   search(term) {
@@ -55,8 +63,8 @@ class App extends React.Component {
     console.log(term);
     {/*
     this.setState({Spotify.search : term});*/}
-    Spotify.search(term).then(tracks => {
-      this.setState({searchResults : tracks});
+    Spotify.search(term).then(searchResults => {
+      this.setState({searchResults : searchResults});
     });
   }
   render() {
