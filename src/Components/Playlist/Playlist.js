@@ -21,8 +21,8 @@ class Playlist extends React.Component {
         {/* Add a TrackList component */}
         <TrackList tracks={this.props.playlistTracks}
         isRemoval={true}
-        onRemove={this.props.onRemove}
-
+        onRemove={this.props.removeTrack}
+        onAdd={this.props.addTrack}
          />
         <a className="Playlist-save"
         onClick={this.props.onSave}

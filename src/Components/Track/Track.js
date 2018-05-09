@@ -31,13 +31,9 @@ class Track extends React.Component {
           {/*track name will go here*/}
           {this.props.track.name}
           </h3>
-          
-{console.log(this.props)}
           <p>
           {/*track artist will go here*/}
-          {this.props.track.artist} |
-           {/*track album will go here */}
-             {this.props.track.album} |
+          {this.props.track.artist} | {this.props.track.album}
            </p>
         </div>
         <a className="Track-action">
