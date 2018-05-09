@@ -1,3 +1,3 @@
-This is project with Codeacademy.
+This project is a CodeAcademy ReactJS project called Jammming. This my second attempt. Still struggling to get Search Function to work.
 
-It was fun but unfortunately it does not work properly yet. I can't seem to figure out how to get the search functionality to work. Hoping for some advice and guidance.
+Help and advice welcomed. 
