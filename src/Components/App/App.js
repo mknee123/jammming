@@ -16,7 +16,7 @@ class App extends Component {
       playlistName : 'My Sick Playlist',
       playlistTracks : []
     };
-
+  //this.Spotify.getAccessToken = this. Spotify.get
   this.addTrack = this.addTrack.bind(this);
   this.removeTrack = this.removeTrack.bind(this);
   this.updatePlaylistName = this.updatePlaylistName.bind(this);
@@ -46,13 +46,14 @@ class App extends Component {
    }
 
    savePlaylist() {
+     //Spotify.getAccessToken();
      let trackURIs = this.state.playlistTracks.map(track => track.uri);
      Spotify.savePlaylist(this.state.playlistName, trackURIs);
      this.setState({
          playlistName: this.props.playlistName,
          playlistTracks: []
        });
-    this.updatePlaylistName(this.state.playlistName);
+  //  this.updatePlaylistName(this.state.playlistName);
    }
 
    search(term) {
@@ -62,12 +63,12 @@ class App extends Component {
    }
 
   render() {
-    Spotify.getAccessToken();
+    //Spotify.getAccessToken();
     return (
       <div>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
         <div className="App">
-          <SearchBar onSearch={this.search} />
+          <SearchBar onSearch={this.search} onKeyPress={this.search}/>
           <div className="App-playlist">
 
             <SearchResults
@@ -78,7 +79,7 @@ class App extends Component {
             <Playlist
             playlistName={this.state.playlistName}
             playlistTacks={this.state.playlistTracks}
-            //onAdd={this.addTrack}
+            onAdd={this.addTrack}
             onRemove={this.removeTrack}
             onNameChange={this.updatePlaylistName}
             onSave={this.savePlaylist} />

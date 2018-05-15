@@ -31,31 +31,41 @@ const Spotify = {
   },
 
   search(term) {
-    this.getAccessToken();
+    let accessToken = Spotify.getAccessToken();
     return fetch(`https://api.spotify.com/v1/search?type=track&limit=20&q=${term}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
-    }).then(response => {
-      return response.json();
-
+    }).then(
+        response => {
+            if (response.ok) {
+                  return response.json();
+              } else {
+                  console.log('Request Failed!');
+              }
     }).then(jsonResponse => {
       if (!jsonResponse.tracks) {
         return [];
-      } else {
+      }
       return jsonResponse.tracks.items.map(track => ({
         id: track.id,
         name: track.name,
         artist: track.artists[0].name,
         album: track.album.name,
-        uri: track.uri
-      }))
-    }
-    })
+        uri: track.uri,
+          /*Attempt to play a song*/
+        image: track.album.images[2].url,
+        preview: track.preview_url
+        /*end of attempt to play a song */
+      }));
+
+    });
   },
+
   savePlaylist(playlistName, trackURIs) {
+    this.getAccessToken();
     if(!playlistName || !trackURIs.length) {
-    return;
+      return;
     }
     const accessToken = Spotify.getAccessToken();
     const headers = { Authorization: `Bearer ${accessToken}`};

@@ -20,7 +20,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 72px;
+  height: auto;
 }
 
 .Track-information h3 {
@@ -31,4 +31,23 @@
   font-size: .83rem;
   font-weight: 300;
   color: rgba(256, 256, 256, 0.8);
+}
+
+.Track-cover-image {
+  padding: 1em;
+}
+.No-preview {
+  padding: 1em;
+  max-width: 30px;
+  font-size:.55em;
+  font-weight: 300;
+}
+.Track-preview-icon {
+}
+
+.Icons {
+  font-size:2em;
+  font-weight: bolder;
+  text-align: center;
+  padding: 0 .2em;
 }
