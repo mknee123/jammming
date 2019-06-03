@@ -24,9 +24,9 @@ class Track extends React.Component {
 
  renderAction() {
    if(this.props.isRemoval) {
-     return  <a id={this.props.track.key} className="Track-action" onClick={this.removeTrack}>-</a>;
+     return  <button id={this.props.track.key} className="Track-action" onClick={this.removeTrack}>-</button>;
    }
-   return <a id={this.props.track.key} className="Track-action" onClick={this.addTrack}>+</a>;
+   return <button id={this.props.track.key} className="Track-action" onClick={this.addTrack}>+</button>;
  }
  /*preview track attempt */
  previewTrack() {
@@ -48,11 +48,11 @@ class Track extends React.Component {
     if(this.props.track.preview){
       if(!this.state.isPlaying) {
         return (
-         <a onClick={this.previewTrack}>  <i className="Icons fas fa-play-circle"></i></a>
+         <button onClick={this.previewTrack}>  <i className="Icons fas fa-play-circle"></i></button>
         );
       } else {
         return (
-        <a onClick={this.previewTrack}>  <i className="Icons fas fa-stop-circle" onClick={this.previewTrack}></i></a>
+        <button onClick={this.previewTrack}>  <i className="Icons fas fa-stop-circle" onClick={this.previewTrack}></i></button>
         );
       }
     } else {
